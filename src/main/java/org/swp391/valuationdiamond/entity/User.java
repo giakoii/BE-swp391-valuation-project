@@ -64,8 +64,8 @@ public class User {
   Order orderId;
 
   @JsonIgnore
-  @OneToOne(mappedBy = "userId", cascade = CascadeType.ALL)
-  EvaluationResult evaluationResults;
+  @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
+  List<EvaluationResult> evaluationResults;
 
   @JsonIgnore
   @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)

@@ -66,7 +66,7 @@ public class EvaluationResult {
   @Column(name = "price", nullable = true, precision = 18, scale = 2)
   BigDecimal price;
 
-  @OneToOne
+  @ManyToOne
   @JoinColumn(name = "user_id", referencedColumnName = "user_id")
   User userId;
 

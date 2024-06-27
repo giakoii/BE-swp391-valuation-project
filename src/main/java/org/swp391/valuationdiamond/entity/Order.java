@@ -47,7 +47,7 @@ public class Order {
   BigDecimal totalPrice;
 
   @JsonIgnore
-  @ManyToOne
+  @OneToOne
   @JoinColumn(name = "user_id", referencedColumnName = "user_id")
   User userId;
 

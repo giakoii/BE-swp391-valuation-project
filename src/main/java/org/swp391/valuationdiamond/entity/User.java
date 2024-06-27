@@ -60,11 +60,13 @@ public class User {
   List<EvaluationRequest> evaluationRequests;
 
   @JsonIgnore
-  @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
-  List<Order> orderId;
+  @OneToOne(mappedBy = "userId", cascade = CascadeType.ALL)
+  Order orderId;
+
   @JsonIgnore
-  @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
-  List<EvaluationResult> evaluationResults;
+  @OneToOne(mappedBy = "userId", cascade = CascadeType.ALL)
+  EvaluationResult evaluationResults;
+
   @JsonIgnore
   @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
   List<CommittedPaper> committedPapers;

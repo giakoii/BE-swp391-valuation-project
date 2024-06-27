@@ -1,12 +1,7 @@
 package org.swp391.valuationdiamond.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Column;
-import jakarta.persistence.Table;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.JoinColumn;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -71,15 +66,11 @@ public class EvaluationResult {
   @Column(name = "price", nullable = true, precision = 18, scale = 2)
   BigDecimal price;
 
-  @ManyToOne
+  @OneToOne
   @JoinColumn(name = "user_id", referencedColumnName = "user_id")
   User userId;
 
-//  @ManyToOne
-//  @JoinColumn(name = "assess_id", referencedColumnName = "assess_id")
-//  DiamondAssessment assessId;
-
-  @ManyToOne
+  @OneToOne
   @JoinColumn(name = "order_de_id", referencedColumnName = "order_de_id")
   OrderDetail orderDetailId;
 }

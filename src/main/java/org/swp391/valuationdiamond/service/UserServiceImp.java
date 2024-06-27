@@ -141,8 +141,6 @@ public class UserServiceImp {
             throw new RuntimeException("Error sending email");
         }
 
-
-
     }
 
     private String generateOtp(){

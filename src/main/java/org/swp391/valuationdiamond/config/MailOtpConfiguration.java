@@ -35,7 +35,7 @@ public class MailOtpConfiguration {
         mailSender.setPassword(password);
 
         Properties props = mailSender.getJavaMailProperties();
-        props.put("mail.smtp.starttls.enable", true);
+        props.put("mail.smtp.starttls.enable", "true");
         return mailSender;
     }
 

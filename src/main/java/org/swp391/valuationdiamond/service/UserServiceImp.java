@@ -1,7 +1,11 @@
 package org.swp391.valuationdiamond.service;
 
+import com.nimbusds.jose.*;
+import com.nimbusds.jose.crypto.MACSigner;
+import com.nimbusds.jwt.JWTClaimsSet;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
+import lombok.experimental.NonFinal;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -14,8 +18,12 @@ import org.swp391.valuationdiamond.entity.Role;
 import org.swp391.valuationdiamond.entity.User;
 import org.swp391.valuationdiamond.repository.UserRepository;
 
+import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -27,6 +35,9 @@ public class UserServiceImp {
     @Autowired
     private JavaMailSender javaMailSender;
 
+    @NonFinal
+    public static final String  SIGNER_KEY = "loJB7k9HBo3Fm3spN+I7TV5Dkx8OyznG2cnitNEX2rvKGi82q4OnhDzhv3EZkXSA";
+
 
     public User createUser(UserDTO userDTO){
         if (userRepository.findByUserId(userDTO.getUserId()) != null) {
@@ -34,6 +45,7 @@ public class UserServiceImp {
         }
 
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
+
         User user = User.builder()
                 .userId(userDTO.getUserId())
                 .password(passwordEncoder.encode(userDTO.getPassword()))
@@ -131,6 +143,35 @@ public class UserServiceImp {
     public List<User> getCustomers(){
         return userRepository.getUsersByRole(Role.customer);
     }
+    //jwt
+    private String jenerateJwtToken(String userId){
+        JWSHeader jwsHeader = new JWSHeader(JWSAlgorithm.HS512);
+
+        JWTClaimsSet jwtClaimsSet = new JWTClaimsSet.Builder()
+                .subject(userId)
+                .issuer("valuation-diamond")
+                .issueTime(new Date())
+                .expirationTime(new Date(Instant.now().plus(1, ChronoUnit.HOURS).toEpochMilli()))
+                .build();
+
+        Payload payload = new Payload(jwtClaimsSet.toJSONObject());
+        JWSObject jwsObject = new JWSObject(jwsHeader, payload);
+
+        try {
+            jwsObject.sign(new MACSigner(SIGNER_KEY.getBytes(StandardCharsets.UTF_8)));
+        } catch (KeyLengthException e) {
+            throw new RuntimeException(e);
+        } catch (JOSEException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        return userId;
+    }
+
+
+
+
 
     //hàm send otp
     public void sendOtpEmail(String email){

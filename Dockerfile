@@ -1,7 +1,7 @@
 FROM maven:3-openjdk-17 AS build
 WORKDIR /app
 
-COPY DB/MSSQL .
+COPY src/main/resources/DB/MSSQL .
 RUN mvn clean package -DskipTests
 
 FROM openjdk:17-jdk-slim

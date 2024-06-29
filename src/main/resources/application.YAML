@@ -16,7 +16,7 @@ spring:
             enable: true
 
   datasource:
-    url: jdbc:mysql://viaduct.proxy.rlwy.net:13265/diamond_valuation_db?useSSL=true
+    url: jdbc:mysql://root:eScJWhrtZQvmdjnsjTnSsFiWXqEwXjFY@viaduct.proxy.rlwy.net:13265/diamond_valuation_db
     username: root
     password: eScJWhrtZQvmdjnsjTnSsFiWXqEwXjFY
     driver-class-name: com.mysql.cj.jdbc.Driver

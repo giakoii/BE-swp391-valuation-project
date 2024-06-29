@@ -3,6 +3,7 @@ WORKDIR /app
 
 COPY . .
 RUN mvn clean package -DskipTests
+RUN ls /app/target
 
 FROM openjdk:17-jdk-slim
 WORKDIR /app

@@ -16,15 +16,15 @@ spring:
             enable: true
 
   datasource:
-    url: jdbc:mysql://root:eScJWhrtZQvmdjnsjTnSsFiWXqEwXjFY@viaduct.proxy.rlwy.net:13265/diamond_valuation_db
-    username: root
-    password: eScJWhrtZQvmdjnsjTnSsFiWXqEwXjFY
-    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://root:eScJWhrtZQvmdjnsjTnSsFiWXqEwXjFY@viaduct.proxy.rlwy.net:13265/diamond_valuation_db
+#    username: root
+#    password: eScJWhrtZQvmdjnsjTnSsFiWXqEwXjFY
+#    driver-class-name: com.mysql.cj.jdbc.Driver
 
-#    url: jdbc:sqlserver://localhost:1433;encrypt=true;trustServerCertificate=true;databaseName=diamond_valuation_db
-#    username: sa
-#    password: Gi@khoi221203
-#    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://database.techtheworld.id.vn:1433;encrypt=true;trustServerCertificate=true;databaseName=TESTDB4
+    username: valuationdiamond
+    password: 6CB754DB-FE43-478F-BB09-C4B0E5406A2C
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
 
   jpa:
     hibernate:

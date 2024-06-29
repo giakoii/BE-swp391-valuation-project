@@ -13,6 +13,9 @@ org/swp391/valuationdiamond/service/IBlogService.class
 org/swp391/valuationdiamond/controller/DiamondPriceController.class
 org/swp391/valuationdiamond/repository/OrderRepository.class
 org/swp391/valuationdiamond/controller/UserController.class
+org/swp391/valuationdiamond/config/MailOtpConfiguration.class
+org/swp391/valuationdiamond/entity/DiamondAssessment.class
+org/swp391/valuationdiamond/entity/DiamondAssessment$DiamondAssessmentBuilder.class
 org/swp391/valuationdiamond/dto/OrderDTO.class
 org/swp391/valuationdiamond/service/DiamondPriceServiceImp$PriceDetails.class
 org/swp391/valuationdiamond/entity/Rating.class
@@ -28,6 +31,7 @@ org/swp391/valuationdiamond/entity/Blog$BlogBuilder.class
 org/swp391/valuationdiamond/mapper/EvaluationRequestMapper.class
 org/swp391/valuationdiamond/dto/EvaluationRequestDTO.class
 org/swp391/valuationdiamond/service/DiamondAssessmentServiceImp.class
+org/swp391/valuationdiamond/ValuationdiamondApplication.class
 org/swp391/valuationdiamond/service/EvaluationServicePriceListServiceImp.class
 org/swp391/valuationdiamond/controller/OrderController.class
 org/swp391/valuationdiamond/entity/DiamondPrice.class

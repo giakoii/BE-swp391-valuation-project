@@ -1,14 +1,18 @@
-FROM maven:3-openjdk-17 AS build
+# Sử dụng hình ảnh OpenJDK 17 với Alpine Linux
+FROM openjdk:17-jdk-alpine
+EXPOSE 80
+# Thiết lập biến ARG cho tệp JAR và tệp cấu hình
+ARG JAR_FILE=target/*.jar
+
+
+# Thiết lập thư mục làm việc
 WORKDIR /app
 
-COPY . .
-RUN mvn clean package -DskipTests
-RUN ls /app/target
+# Sao chép tệp JAR từ thư mục target vào container
+COPY ${JAR_FILE} app.jar
 
-FROM openjdk:17-jdk-slim
-WORKDIR /app
+# Sao chép tệp cấu hình application.yml vào container
+COPY ${CONFIG_FILE} application.yml
 
-COPY --from=build /app/target/valuationdiamond-0.0.1-SNAPSHOT.war valuationdiamond.war
-EXPOSE 8080
-
-ENTRYPOINT ["java","-jar","valuationdiamond.war"]
+# Thiết lập lệnh khởi động container
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]

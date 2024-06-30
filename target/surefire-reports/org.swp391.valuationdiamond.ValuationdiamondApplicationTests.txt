@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: org.swp391.valuationdiamond.ValuationdiamondApplicationTests
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.881 s -- in org.swp391.valuationdiamond.ValuationdiamondApplicationTests

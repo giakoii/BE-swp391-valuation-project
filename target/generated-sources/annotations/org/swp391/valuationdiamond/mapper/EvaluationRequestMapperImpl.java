@@ -7,7 +7,7 @@ import org.swp391.valuationdiamond.entity.User;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-06-30T10:25:17+0700",
+    date = "2024-06-30T10:56:56+0700",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.11 (Amazon.com Inc.)"
 )
 public class EvaluationRequestMapperImpl implements EvaluationRequestMapper {
